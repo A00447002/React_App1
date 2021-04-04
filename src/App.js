@@ -1,25 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import About from './Components/About'
+import MyTown from './Components/MyTown'
+import React, { Component } from "react"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedMenu: 'p'
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h2>Hey there, Welcome to my website</h2>
+        
+        <div className="menu">
+          <p className="menu-item" onClick={() => this.setState({ selectedMenu: 'p' })}>About</p>
+          <p className="menu-item" onClick={() => this.setState({ selectedMenu: 't' })}>My Town</p>
+        </div>
+
+        {this.state.selectedMenu === 'p' ?
+          <About />
+          :
+            <MyTown />
+        }
+      </div>
+    );
+  }
 }
+
 
 export default App;
